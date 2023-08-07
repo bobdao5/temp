@@ -1,7 +1,16 @@
 import React, { useRef, useState } from "react";
 import { NftStorageHttpService } from "./ap/nftstorage";
+import { useNavigate } from "react-router-dom";
+
+
+
+
+
+
 
 const Forms = () => {
+  
+
   const nameInputRef = useRef();
   const ageInputRef = useRef();
   const interestsInputRef = useRef();
@@ -11,13 +20,17 @@ const Forms = () => {
   const githubInputRef = useRef();
   const [selectedFile, setSelectedFile] = useState();
   const nftStorageHttpService = new NftStorageHttpService();
-
+  const navigate = useNavigate(); 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
     console.log(selectedFile);
-  };
 
+  };
+  
   const submitFormHandler = async (event) => {
+    
+    
+
     event.preventDefault();
 
     const response = await nftStorageHttpService.pinFileToIPFS(selectedFile);
@@ -32,11 +45,12 @@ const Forms = () => {
     let enteredGithub = githubInputRef.current.value;
     let enteredTwitter = twitterInputRef.current.value;
     let enteredLinkedIn = linkedInInputRef.current.value;
-
+    
     if (!enteredAge || !enteredName || !enteredInterests || !enteredSkillsets) {
       return alert("Enter Proper details!");
     }
-    this.props.history.push("/Profile");
+    else
+    navigate("/Profile")
   };
 
   const labelStyle =
@@ -54,7 +68,11 @@ const Forms = () => {
 
         {/* Form */}
 
+
+
         <form onSubmit={submitFormHandler}>
+        
+  
           <label htmlFor="name" className={labelStyle}>
             Name
           </label>
@@ -152,13 +170,15 @@ const Forms = () => {
               className={`border border-gray-400 p-2 w-[14rem] rounded-lg`}
               type="file"
               id="Experience"
+              onChange={changeHandler}
             />
           </div>
 
           <button
             className="mt-10  bg-gray-600 text-white text-lg px-20 uppercase py-2 rounded-md font-Grotesk font-medium hover:scale-105 hover:bg-gray-300 hover:text-black"
             type="Submit"
-            onChange={changeHandler}
+          
+            onClick={changeHandler}
           >
             Submit
           </button>

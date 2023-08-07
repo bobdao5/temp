@@ -1,5 +1,7 @@
 import React from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { GiCheckMark } from "react-icons/gi";
+
 
 const Profile = () => {
   return (
@@ -14,6 +16,7 @@ const Profile = () => {
         <button className="bg-white/50 py-2 px-7 rounded-md">
           <a href="/">Explore</a>
         </button>
+        
       </div>
     </section>
   );

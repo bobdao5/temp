@@ -10,7 +10,7 @@ const index = () => {
   };
 
   const dashboardHandler = () => {
-    router.push("/dashboard");
+    router.push("dashboard");
   };
 
   return (

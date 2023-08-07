@@ -1,0 +1,1 @@
+var r,i;function n(){return i||(i=1,r=function(e){if(typeof e!="string")throw new Error("[is-hex-prefixed] value must be type 'string', is currently type "+typeof e+", while checking isHexPrefixed.");return e.slice(0,2)==="0x"}),r}export{n as r};
